@@ -3,114 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast 2DS - Buonarroti</title>
-    <link rel="stylesheet" href="style 3.css">
+    <meta name="description" content="Classe 2DS dell'Istituto Buonarroti - Scopri chi siamo e ascolta i nostri podcast.">
+    <meta name="keywords" content="2DS, Buonarroti, classe, progetti, podcast">
+    <meta name="author" content="Classe 2DS - Istituto Buonarroti">
+    <meta name="theme-color" content="#2196F3">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Classe 2DS - Buonarroti">
+    <meta property="og:description" content="Scopri la nostra classe e i nostri progetti">
+    
+    <title>Classe 2DS - Buonarroti</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <nav class="navbar" role="navigation">
         <div class="container">
-            <h1>🎙️ Podcast 2DS</h1>
-            <p class="subtitle">I nostri progetti audio</p>
+            <div class="nav-brand">
+                <a href="index.html">2DS Buonarroti</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="podcast.html">Podcast</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header role="banner" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>🎓 Benvenuti nella 2DS</h1>
+                <p class="hero-subtitle">Istituto Buonarroti</p>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <section class="intro">
-            <h2>Benvenuti!</h2>
-            <p>Ascolta i podcast realizzati dalla classe 2DS dell'Istituto Buonarroti. Ogni progetto è il risultato del nostro lavoro di gruppo.</p>
+    <main role="main" class="container">
+        <section class="bio-section" aria-labelledby="bio-title">
+            <div class="bio-content">
+                <h2 id="bio-title">Chi Siamo</h2>
+                <p class="lead">Siamo la classe 2DS dell'Istituto Buonarroti, un gruppo di studenti appassionati e creativi.</p>
+                
+                <div class="bio-text">
+                    <p>La nostra classe è composta da [XX] studenti che ogni giorno lavorano insieme per imparare, crescere e realizzare progetti innovativi. Siamo una comunità dinamica dove ognuno porta il proprio contributo unico.</p>
+                    
+                    <p>Durante l'anno scolastico ci dedichiamo a diversi progetti, dalle materie scientifiche a quelle umanistiche, sempre con entusiasmo e voglia di metterci alla prova.</p>
+                    
+                    <p>Tra i nostri progetti più recenti, abbiamo creato una serie di podcast dove discutiamo di temi che ci appassionano, condividiamo le nostre esperienze e diamo voce alle nostre idee.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2DS</div>
+                        <div class="stat-label">La nostra classe</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2025/26</div>
+                        <div class="stat-label">Anno scolastico</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6+</div>
+                        <div class="stat-label">Progetti podcast</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="podcasts">
-            <div class="podcast-card">
-                <div class="podcast-number">01</div>
-                <h3>Titolo Podcast 1</h3>
-                <p class="description">Breve descrizione del primo podcast. Argomento trattato e partecipanti.</p>
-                <audio controls>
-                    <source src="audio/podcast1.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
-                <div class="meta">
-                    <span>📅 Data: --/--/----</span>
-                    <span>⏱️ Durata: --:--</span>
-                </div>
+        <section class="cta-section">
+            <div class="cta-card">
+                <h2>🎙️ Ascolta i Nostri Podcast</h2>
+                <p>Scopri tutti i progetti audio che abbiamo realizzato. Ogni podcast racconta una storia, un'idea, una passione della nostra classe.</p>
+                <a href="podcast.html" class="btn-primary">Vai ai Podcast</a>
             </div>
+        </section>
 
-            <div class="podcast-card">
-                <div class="podcast-number">02</div>
-                <h3>Titolo Podcast 2</h3>
-                <p class="description">Breve descrizione del secondo podcast. Argomento trattato e partecipanti.</p>
-                <audio controls>
-                    <source src="audio/podcast2.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
-                <div class="meta">
-                    <span>📅 Data: --/--/----</span>
-                    <span>⏱️ Durata: --:--</span>
+        <section class="info-section">
+            <h2>I Nostri Progetti</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🎙️</div>
+                    <h3>Podcast</h3>
+                    <p>Creiamo contenuti audio su temi di attualità, cultura e esperienze scolastiche.</p>
                 </div>
-            </div>
-
-            <div class="podcast-card">
-                <div class="podcast-number">03</div>
-                <h3>Titolo Podcast 3</h3>
-                <p class="description">Breve descrizione del terzo podcast. Argomento trattato e partecipanti.</p>
-                <audio controls>
-                    <source src="audio/podcast3.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
-                <div class="meta">
-                    <span>📅 Data: --/--/----</span>
-                    <span>⏱️ Durata: --:--</span>
+                <div class="info-card">
+                    <div class="info-icon">💡</div>
+                    <h3>Creatività</h3>
+                    <p>Mettiamo in pratica le nostre idee attraverso progetti multidisciplinari.</p>
                 </div>
-            </div>
-
-            <div class="podcast-card">
-                <div class="podcast-number">04</div>
-                <h3>Titolo Podcast 4</h3>
-                <p class="description">Breve descrizione del quarto podcast. Argomento trattato e partecipanti.</p>
-                <audio controls>
-                    <source src="audio/podcast4.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
-                <div class="meta">
-                    <span>📅 Data: --/--/----</span>
-                    <span>⏱️ Durata: --:--</span>
-                </div>
-            </div>
-
-            <div class="podcast-card">
-                <div class="podcast-number">05</div>
-                <h3>Titolo Podcast 5</h3>
-                <p class="description">Breve descrizione del quinto podcast. Argomento trattato e partecipanti.</p>
-                <audio controls>
-                    <source src="audio/podcast5.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
-                <div class="meta">
-                    <span>📅 Data: --/--/----</span>
-                    <span>⏱️ Durata: --:--</span>
-                </div>
-            </div>
-
-            <div class="podcast-card">
-                <div class="podcast-number">06</div>
-                <h3>Titolo Podcast 6</h3>
-                <p class="description">Breve descrizione del sesto podcast. Argomento trattato e partecipanti.</p>
-                <audio controls>
-                    <source src="audio/podcast6.mp3" type="audio/mpeg">
-                    Il tuo browser non supporta l'elemento audio.
-                </audio>
-                <div class="meta">
-                    <span>📅 Data: --/--/----</span>
-                    <span>⏱️ Durata: --:--</span>
+                <div class="info-card">
+                    <div class="info-icon">🤝</div>
+                    <h3>Collaborazione</h3>
+                    <p>Lavoriamo in team per raggiungere obiettivi comuni e crescere insieme.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>© 2026 Classe 2DS - Istituto Buonarroti</p>
+            <p>© <span id="year">2026</span> Classe 2DS - Istituto Buonarroti</p>
         </div>
     </footer>
+
+    <script>
+        // Auto-aggiorna l'anno nel footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
