@@ -1,0 +1,29 @@
+# File di sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# File temporanei
+*.tmp
+*.bak
+*.log
+
+# Node modules (se usi npm in futuro)
+node_modules/
+
+# File audio di test (non committare file temporanei)
+audio/test*.mp3
+audio/temp*.mp3
+
+# File video di test
+video/test*.mp4
+video/temp*.mp4
+video/*.mov
+video/*.avi
