@@ -1,3 +1,4 @@
+<!-- VIRUSKENNER.HTML -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -9,7 +10,7 @@
     <meta name="theme-color" content="#DC143C">
     
     <title>Viruskenner - Classe 2DS Buonarroti</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,23 +22,81 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8f9fa;
+            background: #0a0e27;
+            overflow-x: hidden;
         }
         
-        /* Navbar */
+        /* Animated Background - ROSSO */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e27 0%, #5c0a0a 50%, #DC143C 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatParticle 20s linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* NAVBAR - IDENTICA */
         .navbar {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            padding: 1rem 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 20px rgba(220, 20, 60, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(220, 20, 60, 0.2);
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,146 +104,133 @@
         
         .nav-brand a {
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem;
         }
         
         .nav-menu a {
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
             transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            font-size: 0.95rem;
         }
         
-        .nav-menu a:hover,
+        .nav-menu a:hover {
+            background: rgba(220, 20, 60, 0.2);
+            color: white;
+        }
+        
         .nav-menu a.active {
-            background: #DC143C;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #DC143C, #8B0000);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
         }
         
-        /* Header */
-        .viruskenner-header {
-            background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+        /* Page Header */
+        .page-header {
+            position: relative;
             color: white;
             padding: 80px 20px;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
         
-        .viruskenner-header::before {
-            content: '🦠';
+        .page-header::before {
+            content: '';
             position: absolute;
-            font-size: 300px;
-            opacity: 0.05;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.3) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
         }
         
-        .viruskenner-header h1 {
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .page-header h1 {
             font-size: 3.5em;
             margin-bottom: 15px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #DC143C, #FF6347, #fff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 4s linear infinite;
             position: relative;
             z-index: 1;
-            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes gradientText {
+            to { background-position: 300% center; }
         }
         
         .subtitle {
-            font-size: 1.3em;
+            font-size: 1.4em;
             font-weight: 300;
             position: relative;
             z-index: 1;
-            animation: fadeIn 1s ease-out 0.3s both;
+            opacity: 0.95;
         }
         
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        /* Content */
-        .viruskenner-content {
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 1;
             padding: 60px 20px;
         }
         
+        /* Viruskenner Section */
         .viruskenner-section {
-            max-width: 1000px;
-            margin: 40px auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            border-left: 6px solid #DC143C;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: slideUp 0.6s ease-out;
-        }
-        
-        .viruskenner-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 35px rgba(220, 20, 60, 0.15);
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(220, 20, 60, 0.2);
+            margin-bottom: 40px;
+            border: 1px solid rgba(220, 20, 60, 0.2);
         }
         
         .viruskenner-section h2 {
-            color: #DC143C;
-            font-size: 2em;
+            color: white;
+            font-size: 2.5em;
             margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #f0f0f0;
+            font-weight: 700;
             position: relative;
+            padding-bottom: 15px;
         }
         
         .viruskenner-section h2::after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: 0;
             left: 0;
-            width: 80px;
-            height: 3px;
-            background: #DC143C;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #DC143C, #FF6347);
+            border-radius: 2px;
         }
         
         .viruskenner-section p {
-            margin-bottom: 15px;
-            color: #555;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 15px;
         }
         
         /* Presentations Grid */
@@ -196,50 +242,32 @@
         }
         
         .presentation-card {
-            background: linear-gradient(135deg, #DC143C 0%, #A01030 100%);
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(139, 0, 0, 0.2));
+            backdrop-filter: blur(15px);
             color: white;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
-        }
-        
-        .presentation-card::before {
-            content: '🦠';
-            position: absolute;
-            font-size: 120px;
-            opacity: 0.1;
-            top: -20px;
-            right: -20px;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.2);
+            border: 1px solid rgba(220, 20, 60, 0.3);
             transition: all 0.4s ease;
         }
         
         .presentation-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.5);
-        }
-        
-        .presentation-card:hover::before {
-            transform: rotate(15deg);
-            opacity: 0.15;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.4);
         }
         
         .presentation-card h3 {
-            margin-bottom: 15px;
             color: #FFD700;
-            font-size: 1.4em;
-            position: relative;
-            z-index: 1;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         
         .presentation-card p {
             font-size: 0.95em;
             color: rgba(255, 255, 255, 0.9);
-            position: relative;
-            z-index: 1;
             margin: 0;
         }
         
@@ -252,113 +280,104 @@
         .viruskenner-section ul li {
             padding: 15px 20px;
             margin: 10px 0;
-            background: linear-gradient(90deg, rgba(220, 20, 60, 0.05) 0%, rgba(220, 20, 60, 0) 100%);
+            background: rgba(220, 20, 60, 0.15);
             border-left: 4px solid #DC143C;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.05em;
+            transition: all 0.3s ease;
         }
         
         .viruskenner-section ul li:hover {
-            background: linear-gradient(90deg, rgba(220, 20, 60, 0.1) 0%, rgba(220, 20, 60, 0) 100%);
+            background: rgba(220, 20, 60, 0.25);
             transform: translateX(5px);
         }
         
         /* Button */
         .btn-primary {
             display: inline-block;
-            background: linear-gradient(135deg, #DC143C 0%, #A01030 100%);
+            background: linear-gradient(135deg, #DC143C, #8B0000);
             color: white;
-            padding: 15px 40px;
+            padding: 15px 45px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.05em;
             transition: all 0.3s ease;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.95em;
+            margin-top: 20px;
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(220, 20, 60, 0.5);
+            box-shadow: 0 12px 30px rgba(220, 20, 60, 0.6);
         }
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(15px);
             color: white;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
+            padding: 40px 20px;
+            margin-top: 80px;
+            box-shadow: 0 -2px 20px rgba(220, 20, 60, 0.2);
+            border-top: 1px solid rgba(220, 20, 60, 0.2);
         }
         
         footer p {
-            margin: 8px 0;
-            font-size: 0.95em;
+            margin: 10px 0;
+            font-size: 1em;
+            opacity: 0.9;
         }
         
         footer p:first-child {
             font-weight: 600;
+            font-size: 1.05em;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
+            .navbar .container {
                 flex-direction: column;
                 gap: 1rem;
             }
             
             .nav-menu {
-                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 0.5rem;
-                text-align: center;
             }
             
-            .viruskenner-header h1 {
+            .page-header h1 {
                 font-size: 2.5em;
             }
             
             .subtitle {
-                font-size: 1.1em;
+                font-size: 1.2em;
             }
             
             .viruskenner-section {
                 padding: 25px;
             }
             
+            .viruskenner-section h2 {
+                font-size: 2em;
+            }
+            
             .presentations-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
-        .viruskenner-section:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        
-        .viruskenner-section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .viruskenner-section:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-        
-        .viruskenner-section:nth-child(4) {
-            animation-delay: 0.4s;
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar" role="navigation">
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+    
+    <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
                 <a href="index.html">2DS Buonarroti</a>
@@ -371,12 +390,14 @@
         </div>
     </nav>
 
-    <header class="viruskenner-header">
-        <h1>🦠 Viruskenner</h1>
-        <p class="subtitle">Consapevolezza e Prevenzione - Progetto della 2DS</p>
+    <header class="page-header">
+        <div class="container">
+            <h1>🦠 Viruskenner</h1>
+            <p class="subtitle">Consapevolezza e Prevenzione - Progetto della 2DS</p>
+        </div>
     </header>
 
-    <main class="viruskenner-content">
+    <main class="container">
         <section class="viruskenner-section">
             <h2>Chi Siamo</h2>
             <p>Viruskenner è un progetto educativo della classe 2DS dell'Istituto Buonarroti dedicato alla consapevolezza sui virus, alla prevenzione e alla diffusione di informazioni corrette.</p>
@@ -431,15 +452,25 @@
         </section>
     </main>
 
-    <footer role="contentinfo">
+    <footer>
         <div class="container">
             <p>© <span id="year">2026</span> Classe 2DS - Istituto Buonarroti - Progetto Viruskenner</p>
-            <p> Instagram: @2ds.buonarroti</p>
+            <p>📱 Instagram: @2ds.buonarroti</p>
         </div>
     </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
     </script>
 </body>
 </html>
