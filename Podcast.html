@@ -9,9 +9,559 @@
     <meta name="theme-color" content="#2196F3">
     
     <title>Podcast - Classe 2DS Buonarroti</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0a0e27;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e27 0%, #1e3c72 50%, #2196F3 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Particle Container */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatParticle 20s linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand a {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(33, 150, 243, 0.3);
+        }
+        
+        /* Page Header */
+        .page-header {
+            position: relative;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(33, 150, 243, 0.3) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .page-header h1 {
+            font-size: 4em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #2196F3, #00bcd4, #fff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 4s linear infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes gradientText {
+            to {
+                background-position: 300% center;
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5em;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px rgba(33, 150, 243, 0.8);
+        }
+        
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 1;
+            padding: 60px 20px;
+        }
+        
+        /* Podcast Player Section */
+        .podcast-player-section {
+            margin-bottom: 60px;
+        }
+        
+        .podcast-main-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 50px rgba(33, 150, 243, 0.4);
+            border: 2px solid rgba(33, 150, 243, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .podcast-main-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(33, 150, 243, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s linear infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+        
+        .podcast-cover {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover-image-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(33, 150, 243, 0.5);
+            transition: transform 0.4s ease;
+            border: 3px solid rgba(33, 150, 243, 0.5);
+        }
+        
+        .cover-image-container:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .cover-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .podcast-info {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        
+        .podcast-info h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 800;
+        }
+        
+        .podcast-episode {
+            font-size: 1.3em;
+            color: #00bcd4;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .podcast-description {
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .podcast-description p {
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+        }
+        
+        /* Audio Player */
+        .audio-player-wrapper {
+            margin: 30px 0;
+        }
+        
+        audio {
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+            outline: none;
+            filter: drop-shadow(0 5px 20px rgba(33, 150, 243, 0.5));
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.3), rgba(0, 188, 212, 0.3));
+            border-radius: 25px;
+        }
+        
+        /* Podcast Meta Info */
+        .podcast-meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+        
+        .meta-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .meta-icon {
+            font-size: 1.8em;
+        }
+        
+        .meta-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-content strong {
+            font-size: 0.9em;
+            color: #00bcd4;
+            margin-bottom: 5px;
+        }
+        
+        .meta-content span,
+        .meta-content time {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+        }
+        
+        /* Podcast Topics */
+        .podcast-topics {
+            margin-top: 30px;
+        }
+        
+        .podcast-topics h3 {
+            color: #00bcd4;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .podcast-topics ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .podcast-topics ul li {
+            padding: 12px 20px;
+            margin: 8px 0;
+            background: rgba(33, 150, 243, 0.2);
+            border-left: 4px solid #2196F3;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .podcast-topics ul li:hover {
+            background: rgba(33, 150, 243, 0.3);
+            transform: translateX(5px);
+        }
+        
+        /* Additional Info */
+        .additional-info {
+            margin-top: 60px;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(33, 150, 243, 0.3);
+            border: 2px solid rgba(33, 150, 243, 0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .info-box h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        /* Button */
+        .btn-secondary {
+            display: inline-block;
+            background: linear-gradient(45deg, #2196F3, #00bcd4);
+            color: white;
+            padding: 15px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        
+        .btn-secondary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(33, 150, 243, 0.7);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 100px;
+            box-shadow: 0 -5px 30px rgba(33, 150, 243, 0.3);
+            border-top: 2px solid rgba(33, 150, 243, 0.3);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2196F3, #00bcd4, #2196F3, transparent);
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        footer p {
+            margin: 12px 0;
+            font-size: 1.05em;
+        }
+        
+        footer p:first-child {
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .podcast-main-card {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            
+            .page-header h1 {
+                font-size: 3em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .podcast-info h2 {
+                font-size: 2em;
+            }
+            
+            .podcast-meta-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="animated-bg"></div>
+    
+    <div class="particles" id="particles"></div>
+    
     <nav class="navbar" role="navigation">
         <div class="container">
             <div class="nav-brand">
@@ -105,12 +655,23 @@
     <footer role="contentinfo">
         <div class="container">
             <p>© <span id="year">2026</span> Classe 2DS - Istituto Buonarroti</p>
-            <p> Instagram: @2ds.buonarroti</p>
+            <p>📱 Instagram: @2ds.buonarroti</p>
         </div>
     </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Create particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
         
         // Aggiorna durata automaticamente quando l'audio è caricato
         const audio = document.getElementById('mainAudio');
