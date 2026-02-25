@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Video TED Speech - Guarda le presentazioni della classe 2DS dell'Istituto Buonarroti.">
+    <meta name="keywords" content="TED, speech, video, 2DS, Buonarroti, presentazioni">
+    <meta name="author" content="Classe 2DS - Istituto Buonarroti">
+    <meta name="theme-color" content="#E62B1E">
+
+```
+<title>Video TED Speech - Classe 2DS Buonarroti</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #0a0e27;
+        overflow-x: hidden;
+    }
+    
+    /* Animated Background - ROSSO TED + BLU */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, #0a0e27 0%, #1e3c72 15%, #E62B1E 35%, #2196F3 50%, #E62B1E 65%, #1e3c72 85%, #0a0e27 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 25s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        25% { background-position: 50% 100%; }
+        50% { background-position: 100% 50%; }
+        75% { background-position: 50% 0%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* Particles */
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        animation: floatParticle 20s linear infinite;
+    }
+    
+    @keyframes floatParticle {
+        0% {
+            transform: translateY(100vh) translateX(0) scale(0);
+            opacity: 0;
+        }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% {
+            transform: translateY(-100vh) translateX(100px) scale(1);
+            opacity: 0;
+        }
+    }
+    
+    /* NAVBAR */
+    .navbar {
+        background: rgba(10, 14, 39, 0.95);
+        backdrop-filter: blur(15px);
+        padding: 1.2rem 0;
+        box-shadow: 0 2px 20px rgba(230, 43, 30, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(230, 43, 30, 0.2);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-brand a {
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+    }
+    
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 1rem;
+    }
+    
+    .nav-menu a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+    }
+    
+    .nav-menu a:hover {
+        background: rgba(230, 43, 30, 0.2);
+        color: white;
+    }
+    
+    .nav-menu a.active {
+        background: linear-gradient(135deg, #E62B1E, #B22222);
+        color: white;
+        box-shadow: 0 4px 15px rgba(230, 43, 30, 0.4);
+    }
+    
+    /* Page Header */
+    .page-header {
+        position: relative;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        overflow: hidden;
+    }
+    
+    .page-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(230, 43, 30, 0.3) 0%, rgba(33, 150, 243, 0.2) 50%, transparent 70%);
+        animation: rotate 20s linear infinite;
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .page-header h1 {
+        font-size: 3.5em;
+        margin-bottom: 15px;
+        font-weight: 800;
+        color: white;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .ted-logo {
+        display: inline-block;
+        background: #E62B1E;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 5px;
+        font-weight: 800;
+        font-size: 0.8em;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+    }
+    
+    .subtitle {
+        font-size: 1.4em;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+        opacity: 0.95;
+    }
+    
+    /* Main Content */
+    main {
+        position: relative;
+        z-index: 1;
+        padding: 60px 20px;
+    }
+    
+    /* Section Style */
+    .content-section {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(230, 43, 30, 0.2);
+        margin-bottom: 40px;
+        border: 1px solid rgba(230, 43, 30, 0.2);
+    }
+    
+    .content-section h2 {
+        color: white;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+    }
+    
+    .content-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #E62B1E, #2196F3);
+        border-radius: 2px;
+    }
+    
+    .content-section p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 15px;
+    }
+    
+    /* Video Grid */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 40px;
+        margin-top: 30px;
+    }
+    
+    .video-card {
+        background: linear-gradient(135deg, rgba(230, 43, 30, 0.15), rgba(33, 150, 243, 0.15));
+        backdrop-filter: blur(15px);
+        color: white;
+        padding: 0;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(230, 43, 30, 0.2);
+        border: 1px solid rgba(230, 43, 30, 0.3);
+        transition: all 0.4s ease;
+        overflow: hidden;
+    }
+    
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(230, 43, 30, 0.4), 0 0 30px rgba(33, 150, 243, 0.3);
+        border-color: rgba(33, 150, 243, 0.5);
+    }
+    
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        background: #000;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+    }
+    
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .video-info {
+        padding: 25px;
+    }
+    
+    .video-number {
+        display: inline-block;
+        background: linear-gradient(135deg, #E62B1E, #2196F3);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+    
+    .video-card h3 {
+        color: #FFD700;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    
+    .video-author {
+        color: #00bcd4;
+        font-size: 0.95em;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    
+    .video-description {
+        font-size: 0.9em;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    .video-meta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    
+    .video-duration,
+    .video-date {
+        display: inline-block;
+        padding: 5px 12px;
+        background: rgba(33, 150, 243, 0.2);
+        border-radius: 15px;
+        font-size: 0.8em;
+        color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(33, 150, 243, 0.3);
+    }
+    
+    /* No Videos Message */
+    .no-videos {
+        text-align: center;
+        padding: 60px 20px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .no-videos-icon {
+        font-size: 5em;
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+    
+    .no-videos h3 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .no-videos p {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    /* Button */
+    .btn-primary {
+        display: inline-block;
+        background: linear-gradient(135deg, #E62B1E, #2196F3);
+        color: white;
+        padding: 15px 45px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.05em;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(230, 43, 30, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 20px;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(230, 43, 30, 0.4), 0 0 20px rgba(33, 150, 243, 0.4);
+    }
+    
+    .btn-secondary {
+        display: inline-block;
+        background: rgba(33, 150, 243, 0.2);
+        color: white;
+        padding: 12px 35px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(33, 150, 243, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 20px;
+    }
+    
+    .btn-secondary:hover {
+        background: rgba(33, 150, 243, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+        background: rgba(10, 14, 39, 0.95);
+        backdrop-filter: blur(15px);
+        color: white;
+        padding: 40px 20px;
+        margin-top: 80px;
+        box-shadow: 0 -2px 20px rgba(230, 43, 30, 0.2);
+        border-top: 1px solid rgba(230, 43, 30, 0.2);
+    }
+    
+    footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    footer p {
+        margin: 0;
+        font-size: 1em;
+        opacity: 0.9;
+    }
+    
+    footer p:first-child {
+        font-weight: 600;
+        font-size: 1.05em;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .navbar .container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .nav-menu {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+        }
+        
+        .content-section {
+            padding: 25px;
+        }
+        
+        .content-section h2 {
+            font-size: 2em;
+        }
+        
+        .video-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        footer .container {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+
+```
+<nav class="navbar">
+    <div class="container">
+        <div class="nav-brand">
+            <a href="index.html">2DS Buonarroti</a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Podcast.html">Podcast</a></li>
+            <li><a href="viruskenner.html">Viruskenner</a></li>
+            <li><a href="ted-speech.html">TED Speech</a></li>
+            <li><a href="ted-video.html" class="active">Video Speech</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="container">
+        <span class="ted-logo">TED</span>
+        <h1>🎬 Video TED Speech</h1>
+        <p class="subtitle">Guarda le Presentazioni della Classe 2DS</p>
+    </div>
+</header>
+
+<main class="container">
+    <section class="content-section">
+        <h2>I Nostri Video</h2>
+        <p>Guarda le registrazioni complete degli speech realizzati dagli studenti della 2DS. Ogni video racconta una storia unica e presenta idee che meritano di essere condivise.</p>
+        
+        <div class="video-grid" id="videoGrid">
+            <!-- I video verranno caricati qui dinamicamente -->
+        </div>
+    </section>
+
+    <section class="content-section" style="text-align: center;">
+        <h2>📖 Scopri il Progetto</h2>
+        <p>Vuoi saperne di più sul progetto TED Speech e sugli argomenti trattati?</p>
+        <a href="ted-speech.html" class="btn-secondary">Vai alla Pagina TED Speech</a>
+        <a href="index.html" class="btn-primary">Torna alla Home</a>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> Classe 2DS - Istituto Buonarroti - TED Video Speech</p>
+        <p>📱 Instagram: @2ds.buonarroti</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Configurazione video - MODIFICA QUESTO ARRAY PER AGGIUNGERE I TUOI VIDEO
+    const videos = [
+        {
+            number: 1,
+            title: "Il Futuro dell'Intelligenza Artificiale",
+            author: "Marco Rossi",
+            description: "Un'analisi approfondita su come l'AI sta trasformando il nostro mondo e quali opportunità ci riserva il futuro.",
+            duration: "8 minuti",
+            date: "Gennaio 2026",
+            videoFile: "video.speech/speech-01.mp4" // Percorso del video
+        },
+        {
+            number: 2,
+            title: "L'Importanza della Sostenibilità",
+            author: "Laura Bianchi",
+            description: "Scopri come piccole azioni quotidiane possono fare la differenza per il nostro pianeta.",
+            duration: "7 minuti",
+            date: "Gennaio 2026",
+            videoFile: "video.speech/speech-02.mp4"
+        },
+        {
+            number: 3,
+            title: "La Creatività nell'Era Digitale",
+            author: "Andrea Verdi",
+            description: "Come la tecnologia può amplificare la nostra creatività invece di limitarla.",
+            duration: "9 minuti",
+            date: "Febbraio 2026",
+            videoFile: "video.speech/speech-03.mp4"
+        },
+        {
+            number: 4,
+            title: "Salute Mentale e Social Media",
+            author: "Sofia Neri",
+            description: "Un'esplorazione del rapporto tra benessere psicologico e uso dei social network.",
+            duration: "6 minuti",
+            date: "Febbraio 2026",
+            videoFile: "video.speech/speech-04.mp4"
+        },
+        {
+            number: 5,
+            title: "L'Educazione del Domani",
+            author: "Luca Ferrara",
+            description: "Riflessioni su come dovrebbe evolversi il sistema educativo per preparare alle sfide future.",
+            duration: "10 minuti",
+            date: "Febbraio 2026",
+            videoFile: "video.speech/speech-05.mp4"
+        },
+        {
+            number: 6,
+            title: "Sport e Inclusione",
+            author: "Giulia Romano",
+            description: "Come lo sport può essere uno strumento potente per abbattere barriere e unire le persone.",
+            duration: "7 minuti",
+            date: "Febbraio 2026",
+            videoFile: "video.speech/speech-06.mp4"
+        }
+    ];
+    
+    // Funzione per caricare i video
+    function loadVideos() {
+        const videoGrid = document.getElementById('videoGrid');
+        
+        if (videos.length === 0) {
+            videoGrid.innerHTML = `
+                <div class="no-videos">
+                    <div class="no-videos-icon">🎥</div>
+                    <h3>Video in arrivo!</h3>
+                    <p>I video degli speech saranno disponibili a breve.</p>
+                    <p>Nel frattempo, scopri il progetto TED Speech e gli argomenti trattati.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        videos.forEach(video => {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            videoCard.innerHTML = `
+                <div class="video-container">
+                    <video controls preload="metadata">
+                        <source src="${video.videoFile}" type="video/mp4">
+                        Il tuo browser non supporta la riproduzione video.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <span class="video-number">Speech #${video.number}</span>
+                    <h3>${video.title}</h3>
+                    <p class="video-author">Di: ${video.author}</p>
+                    <p class="video-description">${video.description}</p>
+                    <div class="video-meta">
+                        <span class="video-duration">⏱️ ${video.duration}</span>
+                        <span class="video-date">📅 ${video.date}</span>
+                    </div>
+                </div>
+            `;
+            videoGrid.appendChild(videoCard);
+        });
+    }
+    
+    // Carica i video al caricamento della pagina
+    loadVideos();
+    
+    // Particles animation
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particlesContainer.appendChild(particle);
+    }
+</script>
+```
+
+</body>
+</html>
