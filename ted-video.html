@@ -35,9 +35,8 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        background: linear-gradient(135deg, #0a0e27 0%, #1e3c72 15%, #E62B1E 35%, #2196F3 50%, #E62B1E 65%, #1e3c72 85%, #0a0e27 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 25s ease infinite;
+        background: #000000;
+        background-size: 100% 100%;    
     }
     
     @keyframes gradientShift {
@@ -83,7 +82,7 @@
     
     /* NAVBAR */
     .navbar {
-        background: rgba(10, 14, 39, 0.95);
+        background: rgba(0, 0, 0, 1);
         backdrop-filter: blur(15px);
         padding: 1.2rem 0;
         box-shadow: 0 2px 20px rgba(230, 43, 30, 0.3);
@@ -174,18 +173,6 @@
         z-index: 1;
     }
     
-    .ted-logo {
-        display: inline-block;
-        background: #E62B1E;
-        color: white;
-        padding: 10px 25px;
-        border-radius: 5px;
-        font-weight: 800;
-        font-size: 0.8em;
-        letter-spacing: 3px;
-        margin-bottom: 20px;
-    }
-    
     .subtitle {
         font-size: 1.4em;
         font-weight: 300;
@@ -248,7 +235,7 @@
     }
     
     .video-card {
-        background: linear-gradient(135deg, rgba(230, 43, 30, 0.15), rgba(33, 150, 243, 0.15));
+        background: rhba(0,0,0,1);
         backdrop-filter: blur(15px);
         color: white;
         padding: 0;
@@ -269,7 +256,7 @@
         position: relative;
         width: 100%;
         padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-        background: #000;
+        background: #000000;
         border-radius: 20px 20px 0 0;
         overflow: hidden;
     }
@@ -289,7 +276,7 @@
     
     .video-number {
         display: inline-block;
-        background: linear-gradient(135deg, #E62B1E, #2196F3);
+        background: #000000;
         color: white;
         padding: 6px 14px;
         border-radius: 20px;
@@ -299,14 +286,14 @@
     }
     
     .video-card h3 {
-        color: #FFD700;
+        color: #FFFFF;
         font-size: 1.5em;
         margin-bottom: 10px;
         font-weight: 700;
     }
     
     .video-author {
-        color: #00bcd4;
+        color: #FFFFFF;
         font-size: 0.95em;
         margin-bottom: 10px;
         font-weight: 500;
@@ -314,7 +301,7 @@
     
     .video-description {
         font-size: 0.9em;
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(255, 255, 255, 1);
         line-height: 1.6;
         margin-bottom: 15px;
     }
@@ -330,11 +317,11 @@
     .video-date {
         display: inline-block;
         padding: 5px 12px;
-        background: rgba(33, 150, 243, 0.2);
+        background: rgba(0,0,0,1);
         border-radius: 15px;
         font-size: 0.8em;
-        color: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(33, 150, 243, 0.3);
+        color: rgba(0, 0, 0, 1);
+        border: 1px solid rgba(255,255,255,1);
     }
     
     /* No Videos Message */
@@ -406,7 +393,7 @@
     
     /* Footer */
     footer {
-        background: rgba(10, 14, 39, 0.95);
+        background: rgba(0, 0, 0, 1);
         backdrop-filter: blur(15px);
         color: white;
         padding: 40px 20px;
@@ -490,15 +477,13 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="Podcast.html">Podcast</a></li>
             <li><a href="viruskenner.html">Viruskenner</a></li>
-            <li><a href="ted-speech.html">TED Speech</a></li>
-            <li><a href="ted-video.html" class="active">Video Speech</a></li>
+            <li><a href="ted-speech.html" class="active">TED Speech</a></li>
         </ul>
     </div>
 </nav>
 
 <header class="page-header">
     <div class="container">
-        <span class="ted-logo">TED</span>
         <h1>🎬 Video TED Speech</h1>
         <p class="subtitle">Guarda le Presentazioni della Classe 2DS</p>
     </div>
