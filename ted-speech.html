@@ -243,75 +243,6 @@
             margin-bottom: 25px;
         }
         
-        /* Speech Grid */
-        .speech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .speech-card {
-            background: rgba(230, 43, 30, 0.15);
-            backdrop-filter: blur(15px);
-            color: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(230, 43, 30, 0.2);
-            border: 1px solid rgba(230, 43, 30, 0.3);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-        
-        .speech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(230, 43, 30, 0.4), 0 0 30px rgba(33, 150, 243, 0.3);
-            border-color: rgba(33, 150, 243, 0.5);
-        }
-        
-        .speech-number {
-            display: inline-block;
-            background:#E62B1E;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .speech-card h3 {
-            color: #ffffff;
-            font-size: 1.6em;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-        
-        .speech-author {
-            color: #00bcd4;
-            font-size: 1em;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        
-        .speech-card p {
-            font-size: 0.95em;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 10px 0 0 0;
-            line-height: 1.6;
-        }
-        
-        .speech-duration {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 6px 12px;
-            background: rgba(33, 150, 243, 0.2);
-            border-radius: 15px;
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(33, 150, 243, 0.3);
-        }
-        
         /* Info Cards Grid */
         .info-cards-grid {
             display: grid;
@@ -458,11 +389,6 @@
             
             .content-section h2 {
                 font-size: 2em;
-            }
-            
-            .speech-grid,
-            .info-cards-grid {
-                grid-template-columns: 1fr;
             }
             
             footer .container {
